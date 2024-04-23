@@ -1,0 +1,20 @@
+.circle1{
+    border: 45px solid #DF8720;
+    height: 10rem;
+    width : 10rem;
+    border-radius: 100%;
+    position: absolute;
+    left: -5rem;
+    top: -2.4rem;
+}
+
+
+.circle2{
+    border: 120px solid #DF8720;
+    height: 25rem;
+    width : 25rem;
+    border-radius: 100%;
+    position:absolute ;
+    right:-5rem;
+    top: -10rem;
+}
