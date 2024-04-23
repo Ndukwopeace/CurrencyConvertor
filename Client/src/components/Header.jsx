@@ -8,7 +8,7 @@ const Header = () =>{
     return (
         <>
         <div className='flex flex-col items-center 
-        pt-[3.6rem] gap-[1rem] bg-[#211535]
+        pt-[2.5rem] gap-[1rem] bg-[#211535]
          text-white h-[17rem] overflow-clip relative'>
 
                  { /* Circles ================================================== */ }

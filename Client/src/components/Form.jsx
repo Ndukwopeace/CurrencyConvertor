@@ -9,8 +9,8 @@ import CurrencyConverter from './CurrencyConverter';
 
 const Form = () => {
   return (
-    <div className='flex justify-center '>
-        <div className='w-[60%] border border-black   '>
+    <div className='flex justify-center h-[37vh]'>
+        <div className='w-[65%] absolute top-[10rem] z-50 bg-white rounded-xl shadow-md overflow-clip'>
         {/* Navbar */}
           <div className='grid grid-cols-4 hover:cursor-pointer bg-[#F0F5FA] py-[0.7rem] '>
             <div className='flex items-center gap-2 justify-center focus:bg-white'>
