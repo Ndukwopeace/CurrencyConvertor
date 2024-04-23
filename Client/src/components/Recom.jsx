@@ -7,7 +7,7 @@ import logo1 from '../assets/images/SVG1.png'
 const Recom = () => {
   return (
     <>
-      <div className='bg-grey border border-black  flex flex-col gap-[2rem] pt-[1rem] pb-[4.5rem]'>
+      <div className='bg-grey  flex flex-col gap-[2rem] pt-[1rem] pb-[4rem]'>
         <h3 className='self-center text-[#0A146E] font-[600] text-[1.3rem]'>Recommended by over 40,000 verified customers</h3>
 
         <div className='flex gap-[3rem] justify-center'>

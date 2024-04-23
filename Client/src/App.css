@@ -732,6 +732,14 @@ video {
   padding-top: 3.6rem;
 }
 
+.pb-\[4rem\] {
+  padding-bottom: 4rem;
+}
+
+.pb-\[3\.7rem\] {
+  padding-bottom: 3.7rem;
+}
+
 .text-\[0\.9rem\] {
   font-size: 0.9rem;
 }
