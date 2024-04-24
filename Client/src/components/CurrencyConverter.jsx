@@ -1,42 +1,83 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import doubleDirectionArrow from '../assets/images/Arrow.png'
 import info from '../assets/images/SVG (4).png'
+import currencyRequests from '../../Requests/CurrencyRequests.js'
+import countries from '../../Countries/countries.js'
+
 
 const CurrencyConverter = () => {
+    const [exchangeRate , setExchangeRate] = useState('');
+    const [amount , setAmount] = useState(1);
+    const [currencies , setCurrencies] = useState([]);
+    const [ofCurrency , setOfCurrency] = useState('USD');
+    const [towardsCurrency , setTowardsCurrency] = useState('AED');
+    const [loaded , setLoaded] = useState(false)
+    useEffect(()=>{
+           setCurrencies([currencies, ...countries]);
+            console.log(currencies)
+    },[])
+
+  
+
+    const handleSubmit = (e)=>{
+         e.preventDefault()
+        
+        }
+
+    const exchangeCurrency = (e) =>{
+        e.preventDefault();
+        const tempCurrency = ofCurrency;
+
+        setOfCurrency(towardsCurrency)
+        setTowardsCurrency(tempCurrency);
+    }
+
+    
     return (
         <div >
 
-            <form action="" className='flex flex-col  p-[2rem] gap-[2rem]'>
+            <form onSubmit={handleSubmit} className='flex flex-col p-[2rem] gap-[2rem]'>
                 {/* inputs  */}
                 <div className='flex  gap-[2rem]  '>
 
                     <div className='flex flex-col w-[24%] gap-[0.5rem]'>
                         <label htmlFor="amount">Amount</label>
-                        <input type="number" name='amount' className='border border-[#6f7c9c] rounded-lg p-[0.2rem] shadow-md' />
+                        <input type="number" name='amount' value={amount}
+                        onChange={(e)=>setAmount(e.target.value)}
+                        className='border border-[#6f7c9c] rounded-lg p-[0.2rem] shadow-md' />
                     </div>
             {/* Select */}
                     <div className='flex flex-col w-[27%] gap-[0.5rem]'>
                         <label htmlFor="of">Of</label>
-                        <select  name='of' className='border border-[#6f7c9c] rounded-lg p-[0.2rem] shadow-md' >
-                        <option value="USD"> USD</option>
-                        <option value="AED"> AED</option>
+                        <select  name='of' value={ofCurrency}
+                        onChange={(e)=>setOfCurrency(e.target.value)}
+                        className='border border-[#6f7c9c] rounded-lg p-[0.2rem] shadow-md' >
+                        {
+                            currencies?.map((currency)=>{
+                                
+                                console.log(Object.keys(currency.currencies || {}))
+                               return  <option value={Object.keys(currency.currencies || {})[0]}> {currency.flag} - {Object.keys(currency.currencies || {})[0]}</option>
+                            })
+                        }
                         </select>
                     </div>
             {/* Select */}
 
                     <div className='hover:cursor-pointer border border-[#6f7c9c] relative top-[1.7rem]  shadow-md rounded-full  flex items-center justify-center self-baseline  w-[2.7rem] h-[2.5rem]' >
-                        <img src={doubleDirectionArrow} alt="" />
+                        <img src={doubleDirectionArrow} alt="" onClick={exchangeCurrency}/>
 
                     </div>
 
 
                     <div className='flex flex-col w-[27%] gap-[0.5rem]'>
                         <label htmlFor="towards">towards</label>
-                        <select  name='towards' className='border border-[#6f7c9c] rounded-lg p-[0.2rem] shadow-md' >
-                        <option value="USD"> USD</option>
-                        <option value="AED"> AED</option>
+                        <select  name='towards' value={towardsCurrency}
+                        onChange={(e)=>setTowardsCurrency(e.target.value)}
+                        className='border border-[#6f7c9c] rounded-lg p-[0.2rem] shadow-md' >
+                        <option value="USD" > USD</option>
+                        <option value="AED" > AED</option>
                         </select>
-                        
+
                     </div>
 
                 </div>
@@ -55,7 +96,9 @@ const CurrencyConverter = () => {
                              <a href=""> Check shipping rates </a> </p>
                     </div>
 
-                    <button className='bg-[#472E72] text-white self-center p-[0.7rem] rounded-lg'>
+                    <button
+                    type='submit' 
+                    className='bg-[#472E72] text-white self-center p-[0.7rem] rounded-lg'>
                         Convert
                     </button>
                 </div>
