@@ -14,11 +14,15 @@ const CurrencyConverter = () => {
                         <label htmlFor="amount">Amount</label>
                         <input type="number" name='amount' className='border border-[#6f7c9c] rounded-lg p-[0.2rem] shadow-md' />
                     </div>
-
+            {/* Select */}
                     <div className='flex flex-col w-[27%] gap-[0.5rem]'>
                         <label htmlFor="of">Of</label>
-                        <input type="number" name='of' className='border border-[#6f7c9c] rounded-lg p-[0.2rem] shadow-md' />
+                        <select  name='of' className='border border-[#6f7c9c] rounded-lg p-[0.2rem] shadow-md' >
+                        <option value="USD"> USD</option>
+                        <option value="AED"> AED</option>
+                        </select>
                     </div>
+            {/* Select */}
 
                     <div className='hover:cursor-pointer border border-[#6f7c9c] relative top-[1.7rem]  shadow-md rounded-full  flex items-center justify-center self-baseline  w-[2.7rem] h-[2.5rem]' >
                         <img src={doubleDirectionArrow} alt="" />
@@ -28,7 +32,11 @@ const CurrencyConverter = () => {
 
                     <div className='flex flex-col w-[27%] gap-[0.5rem]'>
                         <label htmlFor="towards">towards</label>
-                        <input type="number" name='towards' className='border border-[#6f7c9c] rounded-lg p-[0.2rem] shadow-md' />
+                        <select  name='towards' className='border border-[#6f7c9c] rounded-lg p-[0.2rem] shadow-md' >
+                        <option value="USD"> USD</option>
+                        <option value="AED"> AED</option>
+                        </select>
+                        
                     </div>
 
                 </div>
