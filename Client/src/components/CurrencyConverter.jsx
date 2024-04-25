@@ -20,6 +20,7 @@ const CurrencyConverter = () => {
     
     const [towardsCurrency , setTowardsCurrency] = useState('');
     const [towardsCurrencyName , setTowardsCurrencyName] = useState('');
+    
    
 
     
@@ -66,6 +67,7 @@ const CurrencyConverter = () => {
         // handle towards change ==================================================================
 
         const handleTowardsChange = (e)=>{
+            
             const value = e.target.value;
             console.log(value)
             const values = value.split('-');
@@ -135,11 +137,11 @@ const CurrencyConverter = () => {
                       {
                             currencies?.map((currency)=>{
                                 // console.log(Object.keys(currency.currencies || {}))
-                                
-                                    return <option id="towards" value={`${Object.keys(currency.currencies || '')[0]}-${Object.values(Object.values(currency.currencies || {})[0] || '' )[0]}-${Object.values(Object.values(currency.currencies || {})[0] || '' )[1]} `} 
+                            return <option id="towards" value={`${Object.keys(currency.currencies || '')[0]}-${Object.values(Object.values(currency.currencies || {})[0] || '' )[0]}-${Object.values(Object.values(currency.currencies || {})[0] || '' )[1]} `} 
                                     >{currency.flag}  
                                     {Object.keys(currency.currencies || '')} -
-                                    {Object.values(Object.values(currency.currencies || {})[0] || '' )[0]} </option> 
+                                    {Object.values(Object.values(currency.currencies || {})[0] || '' )[0]} 
+                                </option> 
                             })
                         }
                         </select>
