@@ -17,6 +17,7 @@ const CurrencyConverter = () => {
             console.log(currencies)
     },[])
 
+    console.log(countries.length)
   
 
     const handleSubmit = (e)=>{
@@ -55,7 +56,8 @@ const CurrencyConverter = () => {
                         {
                             currencies?.map((currency)=>{
                                 
-                                console.log(Object.keys(currency.currencies || {}))
+                                // console.log(Object.keys(currency.currencies || {}).length)
+                                
                                return  <option value={Object.keys(currency.currencies || {})[0]}> {currency.flag} - {Object.keys(currency.currencies || {})[0]}</option>
                             })
                         }
