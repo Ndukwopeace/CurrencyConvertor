@@ -134,12 +134,13 @@ const CurrencyConverter = () => {
                         onChange={handleTowardsChange}
 
                         className='border border-[#6f7c9c] rounded-lg p-[0.5rem] shadow-md text-xs ' >
-                      {
+{
                             currencies?.map((currency)=>{
+                                
                                 // console.log(Object.keys(currency.currencies || {}))
-                            return <option id="towards" value={`${Object.keys(currency.currencies || '')[0]}-${Object.values(Object.values(currency.currencies || {})[0] || '' )[0]}-${Object.values(Object.values(currency.currencies || {})[0] || '' )[1]} `} 
-                                    >{currency.flag}  
-                                    {Object.keys(currency.currencies || '')} -
+                            return <option   id="towards" value={`${Object.keys(currency.currencies || '')[0]}-${Object.values(Object.values(currency.currencies || {})[0] || '' )[0]}-${Object.values(Object.values(currency.currencies || {})[0] || '' )[1]} `} 
+                                    >{currency.flag}
+                                    {Object.keys(currency.currencies || '' )} -
                                     {Object.values(Object.values(currency.currencies || {})[0] || '' )[0]} 
                                 </option> 
                             })
