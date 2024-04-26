@@ -106,15 +106,14 @@ const CurrencyConverter = () => {
                             // setTowardsCurrencyObject(e.target.value)
                             setTowardsCurrency(e.target.value)
                         }}
-                        className='border border-[#6f7c9c] rounded-lg p-[0.2rem] shadow-md text-xs ' >
-                      {
+                        className='border border-[#6f7c9c] rounded-lg p-[0.2rem] shadow-md text-xs'>
+                        {
                             currencies?.map((currency)=>{
                                 // console.log(Object.keys(currency.currencies || {}))
                             
                                     return <option  value={Object.keys(currency.currencies || {})[0]} myattribute={Object.values(Object.values(currency.currencies || {})[0] || '' )[0]}
                                     >{currency.flag}  {Object.keys(currency.currencies || {})[0]} - {Object.values(Object.values(currency.currencies || {})[0] || '' )[0]} </option>
-                                    
-                                
+
                             })
                         }
                         </select>
