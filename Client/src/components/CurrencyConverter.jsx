@@ -46,6 +46,7 @@ const CurrencyConverter = () => {
 
     const handleSubmit = (e)=>{
          e.preventDefault()
+         setResult(null);
          setConvert(true);
         currencyRequests.latest({
             base_currency: ofCurrency,
@@ -111,9 +112,19 @@ const CurrencyConverter = () => {
 
     const exchangeCurrency = (e) =>{
         e.preventDefault();
+        
         const tempCurrency = ofCurrency;
         setOfCurrency(towardsCurrency)
         setTowardsCurrency(tempCurrency);
+        
+        
+        const tempValue = myOfValue;
+        setMyOfValue(myValue);
+        setMyValue(tempValue);
+        
+        const tempCurrencyName = ofCurrencyName;
+        setOfCurrencyName(towardsCurrencyName);
+        setTowardsCurrencyName(tempCurrencyName);
     }
 
     
