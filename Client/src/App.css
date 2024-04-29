@@ -606,6 +606,10 @@ video {
   display: grid;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .h-\[1\.5rem\] {
   height: 1.5rem;
 }
@@ -628,6 +632,10 @@ video {
 
 .h-\[37vh\] {
   height: 37vh;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .w-\[1\.5rem\] {
@@ -664,6 +672,22 @@ video {
 
 .w-\[65\%\] {
   width: 65%;
+}
+
+.max-w-\[90\] {
+  max-width: 90;
+}
+
+.max-w-\[90\%\] {
+  max-width: 90%;
+}
+
+.max-w-\[50\%\] {
+  max-width: 50%;
+}
+
+.max-w-\[70\%\] {
+  max-width: 70%;
 }
 
 .grid-cols-4 {
@@ -718,6 +742,10 @@ video {
   gap: 5rem;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .self-center {
   align-self: center;
 }
@@ -754,6 +782,18 @@ video {
   border-width: 7.5rem;
 }
 
+.border-2 {
+  border-width: 2px;
+}
+
+.border-4 {
+  border-width: 4px;
+}
+
+.border-none {
+  border-style: none;
+}
+
 .border-\[\#6f7c9c\] {
   --tw-border-opacity: 1;
   border-color: rgb(111 124 156 / var(--tw-border-opacity));
@@ -762,6 +802,20 @@ video {
 .border-\[\#DF8720\] {
   --tw-border-opacity: 1;
   border-color: rgb(223 135 32 / var(--tw-border-opacity));
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.border-transparent {
+  border-color: transparent;
+}
+
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .bg-\[\#060D4C\] {
@@ -808,6 +862,10 @@ video {
   padding: 0.2rem;
 }
 
+.p-\[0\.5rem\] {
+  padding: 0.5rem;
+}
+
 .p-\[0\.7rem\] {
   padding: 0.7rem;
 }
@@ -828,11 +886,6 @@ video {
 .py-\[0\.5rem\] {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-}
-
-.py-\[0\.7rem\] {
-  padding-top: 0.7rem;
-  padding-bottom: 0.7rem;
 }
 
 .py-\[2rem\] {
@@ -931,11 +984,15 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.hover\:cursor-pointer:hover {
-  cursor: pointer;
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
-.focus\:bg-white:focus {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+.outline {
+  outline-style: solid;
+}
+
+.hover\:cursor-pointer:hover {
+  cursor: pointer;
 }
