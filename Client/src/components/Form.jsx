@@ -5,15 +5,20 @@ import graph from '../assets/images/Vector (2).png';
 import alerts from '../assets/images/SVG (3).png';
 import CurrencyConverter from './CurrencyConverter';
 import '../assets/styles/Form.css'
+import DummyContent from './DummyContent';
 
 
 const Form = () => {
-  const [convertStyle , setConvertStyle] = useState('inherit');
+  const [convertStyle , setConvertStyle] = useState('light');
   const [sendStyle , setSendStyle] = useState('inherit');
   const [graphicStyle , setGraphicStyle] = useState('inherit');
   const [alertStyle , setAlertStyle] = useState('inherit');
+  const [isDummy , setIsDummy] = useState(false);
+  const [isGraphicPage , setIsGraphicPage] = useState(false);
+  const [isAlertPage , setIsAlertPage] = useState(false);
 
   const changeConvertStyle =()=>{
+      setIsDummy(false)
       setSendStyle('inherit');
       setGraphicStyle('inherit');
       setAlertStyle('inherit');
@@ -21,6 +26,9 @@ const Form = () => {
   }
 
   const changeSendStyle =()=>{
+    setIsDummy(true);
+    setIsAlertPage(false);
+    setIsGraphicPage(false);
     setSendStyle('light')
     setGraphicStyle('inherit');
     setAlertStyle('inherit');
@@ -29,6 +37,9 @@ const Form = () => {
   }
 
   const changeGraphicStyle =()=>{
+    setIsDummy(true);
+    setIsAlertPage(false);
+    setIsGraphicPage(true);
     setSendStyle('inherit');
     setGraphicStyle('light');
     setAlertStyle('inherit');
@@ -36,6 +47,9 @@ const Form = () => {
   }
 
   const changeAlertStyle =()=>{
+    setIsDummy(true);
+    setIsGraphicPage(false)
+    setIsAlertPage(true);
     setSendStyle('inherit')
     setGraphicStyle('inherit');
     setAlertStyle('light');
@@ -49,7 +63,11 @@ const Form = () => {
         <div className='w-[65%] absolute top-[10rem] z-50 bg-white rounded-xl shadow-md overflow-clip'>
         {/* Navbar */}
           <div className='grid grid-cols-4 hover:cursor-pointer bg-[#F0F5FA]  h-10 '>
-            <div className='flex items-center gap-2 justify-center h-full ' id={convertStyle} onClick={changeConvertStyle} >
+            <div className='flex items-center gap-2 justify-center h-full ' 
+            
+            id={convertStyle} 
+            
+            onClick={changeConvertStyle} >
               <img src={coins} alt="" />
               <p>Convert</p>
             </div>
@@ -72,7 +90,12 @@ const Form = () => {
 
         {/* currency converter  */}
 
-        <CurrencyConverter/>
+       { 
+                isDummy? 
+                 <DummyContent graphicPage = {isGraphicPage} alertPage ={isAlertPage}/> 
+                :
+                <CurrencyConverter/> 
+                }
 
 
         </div>
