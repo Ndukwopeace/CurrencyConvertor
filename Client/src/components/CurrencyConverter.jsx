@@ -7,19 +7,23 @@ import axios from 'axios'
 
 
 const CurrencyConverter = () => {
-    const [exchangeRate , setExchangeRate] = useState('');
+    // const [exchangeRate , setExchangeRate] = useState('');
     const [result , setResult] = useState(1)
     const [symbol , setSymbol] = useState(null);
     const [amount , setAmount] = useState(1);
     const [currencies , setCurrencies] = useState([]);
+    const [convert , setConvert] = useState(false);
+
     // of currency States
     const [ofCurrency , setOfCurrency] = useState('');
     const [ofCurrencyName , setOfCurrencyName] = useState('');
-
+    const [myOfValue , setMyOfValue] = useState(null);
+    
     //  towards currency states 
     
     const [towardsCurrency , setTowardsCurrency] = useState('');
     const [towardsCurrencyName , setTowardsCurrencyName] = useState('');
+    const [myValue , setMyValue] = useState(null);
     
    
 
@@ -42,19 +46,21 @@ const CurrencyConverter = () => {
 
     const handleSubmit = (e)=>{
          e.preventDefault()
-        // currencyRequests.latest({
-        //     base_currency: ofCurrency,
-        //     currencies: towardsCurrency
-        // })
-        // .then(response =>{
-        //     console.log(response.data)
-        //     console.log(Object.values(Object.values(response.data)[0])[1])
-        //     const rate = Object.values(Object.values(response.data)[0])[1]
-        //     setExchangeRate(rate)
-        //     console.log(amount)
-
+         setConvert(true);
+        currencyRequests.latest({
+            base_currency: ofCurrency,
+            currencies: towardsCurrency
+        })
+        .then(response =>{
+            console.log(response.data)
+            console.log(Object.values(Object.values(response.data)[0])[1])
+            const rate = Object.values(Object.values(response.data)[0])[1]
+            // setExchangeRate(rate)
+            console.log(amount)
+            const final = rate * amount;
+            setResult(final); 
            
-        // })
+        })
 
         // const finalValue = amount * Number(exchangeRate);
         // setResult(finalValue)
@@ -63,11 +69,31 @@ const CurrencyConverter = () => {
 
         }
 
+        // handle Of change  ======================================================================>
+
+        const handleOfChange = async(e)=>{
+            setConvert(false)
+            const value = e.target.value;
+            console.log(value)
+            const values = value.split('-');
+            console.log(values)
+
+            const currencyObject = {
+                'currency': values[0],
+                'name': values[1],
+                'symbol': values[2]
+            }
+
+            setOfCurrency(currencyObject.currency);
+            setOfCurrencyName(currencyObject.name);
+        }
+
+
 
         // handle towards change ==================================================================
 
-        const handleTowardsChange = (e)=>{
-            
+        const handleTowardsChange = async(e)=>{
+            setConvert(false)
             const value = e.target.value;
             console.log(value)
             const values = value.split('-');
@@ -86,7 +112,6 @@ const CurrencyConverter = () => {
     const exchangeCurrency = (e) =>{
         e.preventDefault();
         const tempCurrency = ofCurrency;
-
         setOfCurrency(towardsCurrency)
         setTowardsCurrency(tempCurrency);
     }
@@ -108,13 +133,17 @@ const CurrencyConverter = () => {
             {/* Select */}
                     <div className='flex flex-col w-[27%] gap-[0.5rem]'>
                         <label htmlFor="of">Of</label>
-                        <select  name='of' value={ofCurrency}
-                        onChange={(e)=>setOfCurrency(e.target.value)}
+                        <select  name='of' value={myOfValue}
+                        onChange={(e)=>{
+                            setMyOfValue(e.target.value);
+                            handleOfChange(e);
+                        }}
                         className='border border-[#6f7c9c] rounded-lg p-[0.5rem] shadow-md text-xs' >
                         {
                             currencies?.map((currency)=>{
                                 // console.log(Object.keys(currency.currencies || {}))
-                               return  <option   value={Object.keys(currency.currencies || {})[0]}> {currency.flag}
+                               return  <option   value={`${Object.keys(currency.currencies || '')[0]}-${Object.values(Object.values(currency.currencies || {})[0] || '' )[0]}-${Object.values(Object.values(currency.currencies || {})[0] || '' )[1]} `}>
+                                {currency.flag}
                                 {Object.keys(currency.currencies || {})[0]} - 
                                 {Object.values(Object.values(currency.currencies || {})[0] || '' )[0]} </option>
                             })
@@ -130,8 +159,11 @@ const CurrencyConverter = () => {
 {/* TOWARDS========================================================================================== */}
                     <div className='flex flex-col w-[27%] gap-[0.5rem]'>
                         <label htmlFor="towards">towards</label>
-                        <select  name='towards' value={towardsCurrency}
-                        onChange={handleTowardsChange}
+                        <select  name='towards' value={myValue}
+                        onChange={(e)=>{
+                            setMyValue(e.target.value)
+                            handleTowardsChange(e);    
+                        }}
 
                         className='border border-[#6f7c9c] rounded-lg p-[0.5rem] shadow-md text-xs ' >
                       {
@@ -152,10 +184,10 @@ const CurrencyConverter = () => {
 
                 {/* Hero Note  */}
 
-                <div className=' w-[30%] font-[600] leading-7'>
-                    <p >1.00 United States Dollar = <span className='text-[#5E3D98] text-xl'>0,93 <span className='text-[#9d8cb9] ml-[-0.3rem]'>847853 </span></span>{towardsCurrencyName}</p>
+              { convert && <div className=' w-[30%] font-[600] leading-7'>
+                    <p >{amount} {ofCurrencyName} = <span className='text-[#5E3D98] text-xl'>{result} <span className='text-[#9d8cb9] ml-[-0.3rem]'></span></span>{towardsCurrencyName}</p>
                     <p className='text-sm'>1 EUR = 1,06527 USD </p>
-                </div>
+                </div> }
                 <div className='flex justify-between'>
                     <div className='w-[65%] bg-[#F2F7FE] text-[0.7rem] flex items-center gap-[0.7rem] px-[0.6rem] py-[0.5rem] text-[#373C49] rounded-lg'>
                         <img src={info} alt="" />
