@@ -1,0 +1,25 @@
+
+#light{
+    background-color: white;
+}
+
+#inherit{
+    background-color: inherit;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.myOutline{
+    outline: 1px solid black;
+}
+.none{
+    outline: none;
+}
