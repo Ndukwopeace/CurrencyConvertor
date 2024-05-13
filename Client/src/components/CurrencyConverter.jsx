@@ -25,6 +25,8 @@ const CurrencyConverter = () => {
     const [towardsCurrency, setTowardsCurrency] = useState('');
     const [towardsCurrencyName, setTowardsCurrencyName] = useState('');
     const [myValue, setMyValue] = useState(null);
+    const [towardSymbol, setTowardSymbol] = useState(null);
+
 
 
 
@@ -110,6 +112,8 @@ const CurrencyConverter = () => {
 
         setTowardsCurrency(currencyObject.currency);
         setTowardsCurrencyName(currencyObject.name);
+        setTowardSymbol(currencyObject.symbol);
+
     }
 
     const exchangeCurrency = (e) => {
@@ -127,6 +131,11 @@ const CurrencyConverter = () => {
         const tempCurrencyName = ofCurrencyName;
         setOfCurrencyName(towardsCurrencyName);
         setTowardsCurrencyName(tempCurrencyName);
+
+        const tempSymbol = symbol;
+        setSymbol(towardSymbol);
+        setTowardSymbol(tempSymbol);
+
     }
 
 
